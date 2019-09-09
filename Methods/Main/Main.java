@@ -3,27 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Classes;
+package Main;
+
+import Frames.*;
 
 /**
  *
- * @author yosin
+ * @author pache
  */
-public class Report {
-    
-     
-    public static ReportMethods List;
+public class Main {
+
     /**
      * @param args the command line arguments
      */
-    
     public static void main(String[] args) {
-        
-        List= new ReportMethods();
-        FrameUser reportUser= new FrameUser();
-        reportUser.setVisible(true);
-        
-        
+        // TODO code application logic here
+        LogIn F1 =new LogIn();
+        F1.setVisible(true);
     }
     
 }
