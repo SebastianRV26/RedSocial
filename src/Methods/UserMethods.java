@@ -1,6 +1,11 @@
 package Methods;
 
 import Classes.*;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import javax.swing.JOptionPane;
 
 /*
@@ -34,6 +39,7 @@ public class UserMethods {
                 inicio.ant = fin;
                 fin.sig = inicio;
                 fin.ant = inicio;
+                MeterArchivo();
                 return true;
             }
             
@@ -42,6 +48,8 @@ public class UserMethods {
                 nuevo.ant = fin;
                 inicio.ant = nuevo;
                 inicio = nuevo;
+                fin.sig = inicio;//este lo puse extra
+                MeterArchivo();
                 return true;
             }
             if(nuevo.userName.compareTo(fin.userName)>=0){
@@ -49,6 +57,7 @@ public class UserMethods {
                 nuevo.sig = inicio;
                 fin.sig = nuevo;
                 fin = nuevo;
+                MeterArchivo();
                 return true;
             }
             User aux=inicio;
@@ -58,6 +67,7 @@ public class UserMethods {
                     nuevo.sig = aux;
                     nuevo.ant = aux.ant;
                     aux.ant = nuevo;
+                    MeterArchivo();
                     return true;
                 }
                 aux=aux.sig;
@@ -71,7 +81,7 @@ public class UserMethods {
         User aux = inicio;
         if (aux == fin)
             return null;
-        while (aux != fin) {           
+        while (aux != fin) {           ///////aquii
             if (aux.identification == identification) {
                 return aux;
             }
@@ -85,7 +95,7 @@ public class UserMethods {
     
     public User buscarCliente2(int identification){
         User aux = inicio;
-        while (aux != fin) {           
+        while (aux != fin) {      ////////aqui     
             if (aux.identification == identification) {
                 return aux;
             }
@@ -126,6 +136,7 @@ public class UserMethods {
                 inicio.ant = null ;
                 inicio = inicio.sig;
             }
+            MeterArchivo();
             return true;
         }
         if(aux == fin){
@@ -133,12 +144,48 @@ public class UserMethods {
           inicio.ant = fin.ant;
           fin.sig = null;
           fin = fin.ant;
+          MeterArchivo();
           return true;  
         }
         aux.ant.sig = aux.sig;
         aux.sig.ant = aux.ant;
         aux.sig = null;
         aux.ant = null;
+        MeterArchivo();
         return true;
+    }
+    public void MeterArchivo(){
+        try{
+            ObjectOutputStream escribiendo = new ObjectOutputStream(new FileOutputStream("./usuario.txt"));
+            escribiendo.writeObject(inicio);
+            
+            
+            ObjectOutputStream escribiendo2 = new ObjectOutputStream(new FileOutputStream("./fin.txt"));
+            escribiendo2.writeObject(fin);
+            escribiendo.close();
+            escribiendo2.close();
+        }catch(IOException e){
+            
+        }
+    }
+    
+    public void SacarArchivo(){
+        try{
+            ObjectInputStream sacar = new ObjectInputStream(new FileInputStream("./usuario.txt"));
+             inicio = (User)sacar.readObject();
+             
+             
+             ObjectInputStream sacar2 = new ObjectInputStream(new FileInputStream("./fin.txt"));
+             fin = (User)sacar2.readObject();
+             sacar2.close();
+             sacar.close();
+        }catch(IOException | ClassNotFoundException e){
+            
+        }
+        User aux = inicio;
+        while(aux.identification != fin.identification){
+            aux = aux.sig;
+        }
+        fin = aux;
     }
 }

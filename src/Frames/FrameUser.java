@@ -209,8 +209,9 @@ public class FrameUser extends javax.swing.JFrame {
             }
             else{
                 User aux = meto.inicio;
-                while(aux != meto.fin){
-                    if(aux.identification==id){
+                while(aux.identification != meto.fin.identification){
+                    
+                    if(aux.identification==id){                     
                         Main.List.insertar(title, description," ","Pendiente",id);
                         MethodsUserReports reports=  MethodsUserReports.getInstance();
                         reports.insertSub(users);
@@ -224,9 +225,18 @@ public class FrameUser extends javax.swing.JFrame {
                     
                     aux = aux.sig; 
                 }
+                if(aux.identification==meto.fin.identification){
+                    Main.List.insertar(title, description," ","Pendiente",id);
+                        MethodsUserReports reports=  MethodsUserReports.getInstance();
+                        reports.insertSub(users);
+                        if(report.insertSub(users)==2){
+                            JOptionPane.showMessageDialog(null,"Reporte Enviado");
+                            
+                            return;
+                }
+                }
                 JOptionPane.showMessageDialog(null,"El usuario que desea reportar no existe");
                 
-                  
                
             }
             

@@ -6,12 +6,13 @@
 package Classes;
 
 import Main.Main;
+import java.io.Serializable;
 
 /**
  *
  * @author yosin
  */
-public class ReportClass{
+public class ReportClass implements Serializable{
     int send=Main.user.identification;
     public static int cont = 1;
     private int id;
@@ -99,6 +100,10 @@ public class ReportClass{
 
     public void setIdsend(int idsend) {
         this.idsend = send;
+    }
+
+    public void getState(String realizado) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

@@ -5,11 +5,13 @@
  */
 package Classes;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Sebas
  */
-public class UserMessage {
+public class UserMessage implements Serializable{
     public UserMessage next;
     public FriendList nextFriendList;
     public User nextUser;

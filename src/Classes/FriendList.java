@@ -5,11 +5,15 @@
  */
 package Classes;
 
+import Classes.FriendListUser;
+import Classes.User;
+import java.io.Serializable;
+
 /**
  *
  * @author Sebas
  */
-public class FriendList {
+public class FriendList implements Serializable{
     public FriendList nextFriend, antFriend;
     public FriendListUser nextFriendListUser;
     public User nextUser; // Quién creó la lista

@@ -6,6 +6,11 @@
 package Methods;
 
 import Classes.*;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,6 +20,7 @@ import javax.swing.JOptionPane;
 public class MethodsMessage {
     public Message firtsMessage;
     UserMethods metuser = UserMethods.getInstance();
+    MethodsFriendList metFriendList = MethodsFriendList.getInstance();
     // lista simple, con inserción al inicio.
     
     public static MethodsMessage instance = null;
@@ -30,6 +36,9 @@ public class MethodsMessage {
         if (firtsMessage==null){
             firtsMessage = nuevo;
             nuevo.UserMens=metuser.searchUser(user);
+            metuser.MeterArchivo();
+            metFriendList.MeterArchivo();
+            MeterArchivo();
             //ultimo = nuevo;
             return true;
         }
@@ -44,6 +53,9 @@ public class MethodsMessage {
                 nuevo.nextMessage = firtsMessage; 
                 firtsMessage = nuevo;
                 nuevo.UserMens=metuser.searchUser(user);
+                metuser.MeterArchivo();
+                metFriendList.MeterArchivo();
+                MeterArchivo();
                 return true;   
             }
             auxiliar = auxiliar.nextMessage;            
@@ -68,6 +80,9 @@ public class MethodsMessage {
         }
         if (firtsMessage.getIDMessage()== IDMensaje) {
             firtsMessage = firtsMessage.nextMessage;
+            metuser.MeterArchivo();
+            metFriendList.MeterArchivo();
+            MeterArchivo();
             return true;
         }
         Message ant = firtsMessage;
@@ -75,6 +90,9 @@ public class MethodsMessage {
         while (aux != null) {            
             if (aux.getIDMessage()== IDMensaje) {
                 ant.nextMessage = aux.nextMessage;
+                metuser.MeterArchivo();
+                metFriendList.MeterArchivo();
+                MeterArchivo();
                 return true;
             }
             ant = aux;
@@ -90,6 +108,9 @@ public class MethodsMessage {
         }
         aux.setTextMessage(textoMensaje);
         aux.setURLImage(URLdeImagen);
+        metuser.MeterArchivo();
+        metFriendList.MeterArchivo();
+        MeterArchivo();
         return true;
     }
     
@@ -97,7 +118,10 @@ public class MethodsMessage {
         Message nuevo = new Message (IDMensaje, textoMensaje, URLdeImagen);
         if (firtsMessage==null){
             firtsMessage = nuevo;
-            nuevo.UserAdmin = "Diego"; 
+            nuevo.UserAdmin = "Diego";
+            metuser.MeterArchivo();
+            metFriendList.MeterArchivo();
+            MeterArchivo();
             //ultimo = nuevo;
             return true;
         }
@@ -112,6 +136,9 @@ public class MethodsMessage {
                 nuevo.nextMessage = firtsMessage; 
                 firtsMessage = nuevo;
                 nuevo.UserAdmin="Diego";
+                metuser.MeterArchivo();
+                metFriendList.MeterArchivo();
+                MeterArchivo();
                 return true;   
             }
             auxiliar = auxiliar.nextMessage;            
@@ -152,4 +179,23 @@ public class MethodsMessage {
         //}
         return 2;
    }
+   public void MeterArchivo(){
+        try{
+            ObjectOutputStream escribiendo = new ObjectOutputStream(new FileOutputStream("./Massage.txt"));
+            escribiendo.writeObject(firtsMessage);
+                                    
+        }catch(IOException e){
+            
+        }
+    }
+    public void SacarArchivo(){
+        try{
+            ObjectInputStream sacar = new ObjectInputStream(new FileInputStream("./Massage.txt"));
+             firtsMessage = (Message)sacar.readObject();
+                                      
+        }catch(IOException | ClassNotFoundException e){
+            
+        }
+        
+    }
 }

@@ -5,6 +5,7 @@
  */
 package Methods;
 
+import Classes.FriendList;
 import Classes.*;
 import Main.Main;
 import javax.swing.JOptionPane;
@@ -41,10 +42,12 @@ public class MethodsFriendListUser {
         friendUser.nextUser = auxUser;
         if (auxFriendList.nextFriend == null) { //si no exite nodo, lo crea
             auxFriendList.nextFriendListUser = friendUser;
+            metuser.MeterArchivo();
             return 2; 
         }
         friendUser.next = auxFriendList.nextFriendListUser; //en caso de que ya exista nodo, lo asigna al inicio
-        auxFriendList.nextFriendListUser = friendUser;  
+        auxFriendList.nextFriendListUser = friendUser;
+        metuser.MeterArchivo();
         return 2; //asignado
     }
     public boolean Validation(User usu, FriendList friendList){
@@ -104,5 +107,5 @@ public class MethodsFriendListUser {
         }
         return false;
     }
-       
+      
 }

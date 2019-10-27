@@ -37,13 +37,13 @@ public class Admin extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<String>();
+        jList1 = new javax.swing.JList<>();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<String>();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jTextField1 = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<String>();
+        jList2 = new javax.swing.JList<>();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
@@ -69,7 +69,7 @@ public class Admin extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nombre", "Pais", "Ciudad", "Cedula" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nombre", "Pais", "Ciudad", "Cedula" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -92,6 +92,11 @@ public class Admin extends javax.swing.JFrame {
         });
 
         jButton4.setText("Eventos");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Mensajes");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -201,7 +206,7 @@ public class Admin extends javax.swing.JFrame {
             listModel2.clear();
             String nombre = jTextField1.getText();
             User aux = met.inicio;
-            while(aux != met.fin){
+            while(aux != met.fin){ //////////aqui
                 if(aux.name.equals(nombre)){
                     listModel2.addElement(aux.name);
                     listModel2.addElement(""+aux.identification);
@@ -220,7 +225,7 @@ public class Admin extends javax.swing.JFrame {
             listModel2.clear();
             int cedula = Integer.parseInt(jTextField1.getText());
             User aux = met.inicio;
-            while(aux != met.fin){
+            while(aux != met.fin){ //////////aqui
                 if(aux.identification==cedula){
                     listModel2.addElement(aux.name);
                     listModel2.addElement(""+aux.identification);
@@ -238,7 +243,7 @@ public class Admin extends javax.swing.JFrame {
             listModel2.clear();
             String ciudad = jTextField1.getText();
             User aux = met.inicio;
-            while(aux != met.fin){
+            while(aux != met.fin){///////////aqui
                 if(aux.city.equals(ciudad)){
                     listModel2.addElement(aux.name);
                     listModel2.addElement(""+aux.identification);
@@ -256,7 +261,7 @@ public class Admin extends javax.swing.JFrame {
             listModel2.clear();
             String pais = jTextField1.getText();
             User aux = met.inicio;
-            while(aux != met.fin){
+            while(aux != met.fin){/////////aqui
                 if(aux.country.equals(pais)){
                     listModel2.addElement(aux.name);
                     listModel2.addElement(""+aux.identification);
@@ -285,6 +290,13 @@ public class Admin extends javax.swing.JFrame {
         t8.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+       AdmiEvents admievents= new AdmiEvents();
+       this.dispose();
+       admievents.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
@@ -346,7 +358,7 @@ public class Admin extends javax.swing.JFrame {
 public void imprimir(){    
     User aux = met.inicio;
     listModel.clear();
-    while (aux!=met.fin){
+    while (aux!=met.fin){////////aqui
         listModel.addElement(aux.name);
         listModel.addElement(""+aux.identification);
         aux = aux.sig;

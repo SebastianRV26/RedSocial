@@ -5,7 +5,13 @@
  */
 package Methods;
 
+import Classes.FriendList;
 import Classes.*;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import javax.swing.JOptionPane;
 
 /**
@@ -89,37 +95,58 @@ public class MethodsFriendList {
             if (first.nextFriend==null){ // si existe un único elemento
                 first=last=null;
             }else{ //si existen mas de un elemento
-                //first=first.nextFriend; 
-                //first.antFriend=null;
-                
-                first.nextFriend.antFriend = last;
-                first.antFriend.nextFriend = first.nextFriend;
-                first.antFriend = last;
-                first = first.nextFriend;
-                
-                
+                first=first.nextFriend; 
+                first.antFriend=null;
             }
+            metUser.MeterArchivo();
+            MeterArchivo();
             return true;
         }
         if (aux==last){ //para el caso de que sea el ultimo 
             //no se va a caer porque ya validé que existan varios elementos
-            //last=last.antFriend;
-            //last.nextFriend=null;
-            //return true;
-            last.antFriend.nextFriend = first;
-            first.antFriend = last.antFriend;
-            last.nextFriend = first;
-            last = last.antFriend;
+            last=last.antFriend;
+            last.nextFriend=null;
+            metUser.MeterArchivo();
+            MeterArchivo();
             return true;
         } //si está en el medio y no se cae 
-        //(aux.antFriend).nextFriend = aux.nextFriend; //aux.ant muevase al que está antes de ant, (aux.ant).sig 
-        //(aux.nextFriend).antFriend = aux.antFriend;
-        //return true;
-        aux.antFriend.nextFriend = aux.nextFriend;
-        aux.nextFriend.antFriend = aux.antFriend;
-        aux.nextFriend = null;
-        aux.antFriend = null;
+        (aux.antFriend).nextFriend = aux.nextFriend; //aux.ant muevase al que está antes de ant, (aux.ant).sig 
+        (aux.nextFriend).antFriend = aux.antFriend;
         return true;
+    }
+    public void MeterArchivo(){
+        try{
+            ObjectOutputStream escribiendo = new ObjectOutputStream(new FileOutputStream("./listaAmigos.txt"));
+            escribiendo.writeObject(first);
+            
+            
+            ObjectOutputStream escribiendo2 = new ObjectOutputStream(new FileOutputStream("./finListaAmigos.txt"));
+            escribiendo2.writeObject(last);
+            escribiendo.close();
+            escribiendo2.close();
+        }catch(IOException e){
+            
+        }
+    }
+    
+    public void SacarArchivo(){
+        try{
+            ObjectInputStream sacar = new ObjectInputStream(new FileInputStream("./listaAmigos.txt"));
+             first = (FriendList)sacar.readObject();
+             
+             
+             ObjectInputStream sacar2 = new ObjectInputStream(new FileInputStream("./finListaAmigos.txt"));
+             last = (FriendList)sacar2.readObject();
+             sacar2.close();
+             sacar.close();
+        }catch(IOException | ClassNotFoundException e){
+            
+        }
+        FriendList aux = first;
+        while(!aux.getNameList().equals(last.getNameList())){
+            aux = aux.nextFriend;
+        }
+        last = aux;
     }
 }
 

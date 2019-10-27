@@ -8,12 +8,14 @@ import Classes.ReportClass;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import Main.Main;
+import Methods.UserMethods;
 
 /**
  *
  * @author yosin
  */
 public class FrameAdmi extends javax.swing.JFrame {
+    UserMethods user1 = UserMethods.getInstance();
     DefaultListModel<String> list= new DefaultListModel<>();
       
     /**
@@ -267,10 +269,12 @@ public class FrameAdmi extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        ReportClass aux=Main.List.inicio;
+        ReportClass aux=Main.List.searchReport(Integer.parseInt(jTextField2.getText()));
         aux.setObservationAdmi(jTextField1.getText());
         String estado=(String)jComboBox1.getSelectedItem();
         aux.setState(estado);
+        user1.MeterArchivo();
+        Main.List.MeterArchivo();
         JOptionPane.showMessageDialog(null,"Reporte Analizado");
         
             
@@ -342,13 +346,13 @@ public class FrameAdmi extends javax.swing.JFrame {
       int id= Integer.parseInt(jTextField2.getText());
       ReportClass aux=Main.List.inicio;
       
-                if(aux.sig == Main.List.inicio){
+                if(aux.sig.getId() == Main.List.inicio.getId()){
           jLabel7.setText(aux.getName());
           jLabel8.setText(aux.getObservationClient());
           return;
           
                 }else{
-                    while (aux.sig != Main.List.inicio) {            
+                    while (aux.sig.getId() != Main.List.inicio.getId()) {            
                         if (aux.getId() == id) {
                             jLabel7.setText(aux.getName());
                             jLabel8.setText(aux.getObservationClient());
@@ -356,7 +360,13 @@ public class FrameAdmi extends javax.swing.JFrame {
                         }else{
                             aux=aux.sig;
                         }
+                        
                     }
+                    if (aux.getId() == id) {
+                            jLabel7.setText(aux.getName());
+                            jLabel8.setText(aux.getObservationClient());
+                            return ;
+                        }
                     JOptionPane.showMessageDialog(null, "No se encuentra");
                 }
                 

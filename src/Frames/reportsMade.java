@@ -191,8 +191,9 @@ public class reportsMade extends javax.swing.JFrame {
         User listuser= UserMethods.getInstance().inicio;
         
         User aux = listuser;
-        
+        list.clear();
         do{
+            
             System.out.println(aux.name);
             ReportClass auxReport= aux.nextReportUser;
             if(auxReport==null){
@@ -211,7 +212,7 @@ public class reportsMade extends javax.swing.JFrame {
                     System.out.println("kk2");
                 }
                 
-            } while(auxReport!=aux.nextReportUser);
+            } while(auxReport.getId()!=aux.nextReportUser.getId());
             aux = aux.sig;
         }while (aux!=UserMethods.getInstance().fin); 
         

@@ -5,11 +5,13 @@
  */
 package Classes;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Sebas
  */
-public class Message {
+public class Message implements Serializable{
     private int IDMessage;
     private String textMessage;
     private String URLImage; //donde está ubicada la imagen
@@ -17,8 +19,6 @@ public class Message {
     public UserMessage nextFriendList;
     public User UserMens; //quíen creó el mensjae
     public String UserAdmin; //indica que el administrador creó 
-    //public User nextUser;
-    //public FriendList nextFriend;
 
     public Message(int IDMessage, String textMessage, String URLImage) {
         this.IDMessage = IDMessage;

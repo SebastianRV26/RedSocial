@@ -192,34 +192,29 @@ public class reportsReceived extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
-
     public void searchReports(){
-        int userLoginId= Main.user.identification;
-        String state=(String)jComboBox1.getSelectedItem();
-        User listuser= UserMethods.getInstance().inicio;
-        
-        User aux = listuser;
-        
-        do{
-            ReportClass auxReport= aux.nextReportUser;
-            System.out.println(aux.name);
-            if(auxReport==null){
-                
-                
-                aux=aux.sig;
-                continue;
-            } 
-            do{ 
-                if(auxReport.getState().equals(state) && auxReport.getIdcard()==userLoginId){
-                   auxReport=auxReport.sig;
-                    list.addElement("Reporte: "+auxReport.getName());
-                    list.addElement(" ID reporte: "+auxReport.getId());
-                    list.addElement(" ");
-                    jList1.setModel(list);
-                }
-                
-            } while(auxReport!=aux.nextReportUser);
-            aux = aux.sig;
-        }while (aux!=UserMethods.getInstance().fin); 
+        int userLoginId = Main.user.identification;
+        String state =(String)jComboBox1.getSelectedItem();
+        User startListUsers = UserMethods.getInstance().inicio;
+        User aux = UserMethods.getInstance().inicio;
+        do {
+            ReportClass startReportList = aux.nextReportUser;
+            if(startReportList == null){
+                aux = aux.sig;
+            }else{
+                ReportClass aux2 = aux.nextReportUser;
+                do {
+                    if(aux2.getIdcard() == userLoginId && aux2.getState().equals(state)){
+                        
+                        list.addElement("Reporte: "+aux2.getName());
+                        list.addElement(" ID reporte: "+aux2.getId());
+                        list.addElement(" ");
+                        jList1.setModel(list);
+                    }
+                    aux2 = aux2.sig;
+                } while (aux2 != startReportList);
+                aux = aux.sig;
+            }                                                          
+        } while(aux.identification != startListUsers.identification);                                         
     }
 }

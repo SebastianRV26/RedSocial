@@ -5,6 +5,7 @@
  */
 package Frames;
 
+import Classes.FriendList;
 import Classes.*;
 import Methods.*;
 import Main.*;
@@ -255,38 +256,39 @@ public class FrameFriendList extends javax.swing.JFrame {
                                     .addComponent(jLabel8)
                                     .addComponent(jLabel11))
                                 .addGap(18, 18, 18)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jComboBox2, 0, 150, Short.MAX_VALUE)
-                                    .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(viewFriendListInComun)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(addFriend)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jComboBox2, 0, 150, Short.MAX_VALUE)
+                                            .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(printUsers))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(search)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(viewFriendListInComun)))))
-                        .addGap(0, 6, Short.MAX_VALUE))
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addComponent(addFriend)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(printUsers))
+                                            .addComponent(search))))))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(Before)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(Before))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel12)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel13)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jComboBox4, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(21, 21, 21)))
                         .addContainerGap())))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel12)
-                .addGap(18, 18, 18)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel13)
-                .addGap(9, 9, 9)
-                .addComponent(jComboBox4, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(232, 232, 232)
+                .addGap(172, 172, 172)
                 .addComponent(deleteFriend)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -309,23 +311,24 @@ public class FrameFriendList extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(search)
-                    .addComponent(viewFriendListInComun))
+                    .addComponent(search))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(addFriend)
                     .addComponent(printUsers))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(viewFriendListInComun)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13)
                     .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(deleteFriend)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(25, 25, 25)
                 .addComponent(Before)
                 .addContainerGap())
         );
@@ -501,11 +504,13 @@ public class FrameFriendList extends javax.swing.JFrame {
             }
                 
             if (jTextField5.getText().isEmpty()==false){
-                friend.setNameList(jTextField5.getText());
+                friend.setNameList(jTextField5.getText());//Si hay tiempo arreglar esto
             }
             if (jTextArea3.getText().isEmpty()==false){
                 friend.setDescription(jTextArea3.getText());
             }
+            metUser.MeterArchivo();
+            metFriendList.MeterArchivo();
             JOptionPane.showMessageDialog(null, "Modificado");
         } else
         JOptionPane.showMessageDialog(null, "No existe");
@@ -530,6 +535,8 @@ public class FrameFriendList extends javax.swing.JFrame {
             String usu = Main.user.userName;
             if (metFriendList.insertLast(name, description, usu)==true){
                 JOptionPane.showMessageDialog(null, "Lista "+name+" creada exitosamente");
+                metUser.MeterArchivo();
+                metFriendList.MeterArchivo();
             }
             else{
                 JOptionPane.showMessageDialog(null, "La lista "+name+" NO ha creada exitosamente");
@@ -623,7 +630,7 @@ public class FrameFriendList extends javax.swing.JFrame {
         FriendList aux1=metFriendList.first;
         
         while (aux1!=metFriendList.last){           
-            if (aux1.nextUser.equals(Main.user)){ //si la lista la creó el usuario actual                
+            if (aux1.nextUser.identification==Main.user.identification){ //si la lista la creó el usuario actual                
                 if (aux1.nextFriendListUser!=null){ //si no tiene amigos mejor ni los compare
                     FriendList aux2=metFriendList.first;
                     while (aux2!=metFriendList.last){
@@ -650,7 +657,7 @@ public class FrameFriendList extends javax.swing.JFrame {
             }
             aux1 = aux1.nextFriend; 
         }
-        if (aux1.nextUser.equals(Main.user)){ //si la lista la creó el usuario actual                
+        if (aux1.nextUser.identification==Main.user.identification){ //si la lista la creó el usuario actual                
                 if (aux1.nextFriendListUser!=null){ //si no tiene amigos mejor ni los compare
                     FriendList aux2=metFriendList.first;
                     while (aux2!=metFriendList.last){
@@ -715,6 +722,8 @@ public class FrameFriendList extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "no existe Usuario");
         }else if (resp==2){
             JOptionPane.showMessageDialog(null, "Usuario insertado a la lista: "+(String) jComboBox3.getSelectedItem());
+            metUser.MeterArchivo();
+            metFriendList.MeterArchivo();
         }
         
     }//GEN-LAST:event_addFriendActionPerformed
@@ -731,7 +740,7 @@ public class FrameFriendList extends javax.swing.JFrame {
         
         while(aux1!=metFriendList.last){
             if (aux1.nextUser!=null){
-                if (aux1.nextUser.equals(Main.user)){ //en caso de ser el creador
+                if (aux1.nextUser.identification==Main.user.identification){ //en caso de ser el creador
                     if (aux1.nextFriendListUser != null) {
                         FriendListUser auxFU = aux1.nextFriendListUser;
                         while (auxFU != null) {
@@ -756,11 +765,11 @@ public class FrameFriendList extends javax.swing.JFrame {
             aux1=aux1.nextFriend;
         }
         if (aux1.nextUser!=null){
-                if (aux1.nextUser.equals(Main.user)){ //en caso de ser el creador
+                if (aux1.nextUser.identification==Main.user.identification){ //en caso de ser el creador
                     if (aux1.nextFriendListUser != null) {
                         FriendListUser auxFU = aux1.nextFriendListUser;
                         while (auxFU != null) {
-                            if (auxFU.nextUser.equals(usu)){
+                            if (auxFU.nextUser.identification==usu.identification){
                                 listModel.addElement("LIsta: "+aux1.getNameList());
                             }
                             auxFU = auxFU.next;
@@ -770,7 +779,7 @@ public class FrameFriendList extends javax.swing.JFrame {
                     if (aux1.nextFriendListUser != null) {
                         FriendListUser auxFU = aux1.nextFriendListUser;
                         while (auxFU != null) {
-                            if (auxFU.nextUser.equals(usu)){
+                            if (auxFU.nextUser.identification==usu.identification){
                                 listModel.addElement("LIsta: "+aux1.getNameList());
                             }
                             auxFU = auxFU.next;
@@ -817,7 +826,7 @@ public class FrameFriendList extends javax.swing.JFrame {
         listModel.clear();//Limpió el listModel
         while(auxList!=metFriendList.last){
             if (auxList.nextUser!=null){
-                if (auxList.nextUser.equals(Main.user)){ //si es el creador de la lista
+                if (auxList.nextUser.identification==Main.user.identification){ //si es el creador de la lista
                     listModel.addElement("+++++++++++++++Lista de Amigos+++++++++++++++");
                     listModel.addElement("Lista: "+auxList.getNameList());//Lleno el listModel
                     listModel.addElement("Descripción: "+auxList.getDescription());
@@ -838,7 +847,7 @@ public class FrameFriendList extends javax.swing.JFrame {
             auxList=auxList.nextFriend;
         }
         if (auxList.nextUser!=null){
-                if (auxList.nextUser.equals(Main.user)){ //si es el creador de la lista
+                if (auxList.nextUser.identification==Main.user.identification){ //si es el creador de la lista
                     listModel.addElement("+++++++++++++++Lista de Amigos+++++++++++++++");
                     listModel.addElement("Lista: "+auxList.getNameList());//Lleno el listModel
                     listModel.addElement("Descripción: "+auxList.getDescription());
@@ -957,7 +966,7 @@ public class FrameFriendList extends javax.swing.JFrame {
         listModel.clear();//Limpió el listModel
         while(auxList!=metFriendList.last){
             if (auxList.nextUser!=null){
-                if (auxList.nextUser.equals(Main.user)){ //si es el creador de la lista
+                if (auxList.nextUser.identification==Main.user.identification){ //si es el creador de la lista
                     listModel.addElement("+++++++++++++++Lista de Amigos+++++++++++++++");
                     listModel.addElement("Lista: "+auxList.getNameList());//Lleno el listModel
                     listModel.addElement("Descripción: "+auxList.getDescription());
@@ -975,7 +984,7 @@ public class FrameFriendList extends javax.swing.JFrame {
                 }else if (auxList.nextFriendListUser != null) {
                     FriendListUser auxFU1 = auxList.nextFriendListUser;
                     while (auxFU1 != null) {   
-                        if (auxFU1.nextUser.equals(Main.user)){
+                        if (auxFU1.nextUser.identification==Main.user.identification){
                             listModel.addElement("+++++++++++++++Lista de Amigos+++++++++++++++");
                             listModel.addElement("Lista: "+auxList.getNameList());//Lleno el listModel
                             listModel.addElement("Descripción: "+auxList.getDescription());
@@ -998,7 +1007,7 @@ public class FrameFriendList extends javax.swing.JFrame {
             auxList=auxList.nextFriend;
         }
         if (auxList.nextUser!=null){
-                if (auxList.nextUser.equals(Main.user)){ //si es el creador de la lista
+                if (auxList.nextUser.identification==Main.user.identification){ //si es el creador de la lista
                     listModel.addElement("+++++++++++++++Lista de Amigos+++++++++++++++");
                     listModel.addElement("Lista: "+auxList.getNameList());//Lleno el listModel
                     listModel.addElement("Descripción: "+auxList.getDescription());
@@ -1016,7 +1025,7 @@ public class FrameFriendList extends javax.swing.JFrame {
                 }else if (auxList.nextFriendListUser != null) {
                     FriendListUser auxFU1 = auxList.nextFriendListUser;
                     while (auxFU1 != null) {   
-                        if (auxFU1.nextUser.equals(Main.user)){
+                        if (auxFU1.nextUser.identification==Main.user.identification){
                             listModel.addElement("+++++++++++++++Lista de Amigos+++++++++++++++");
                             listModel.addElement("Lista: "+auxList.getNameList());//Lleno el listModel
                             listModel.addElement("Descripción: "+auxList.getDescription());
@@ -1046,14 +1055,14 @@ public class FrameFriendList extends javax.swing.JFrame {
         }
         while (aux1 != metFriendList.last){
             if (aux1.nextUser!=null){
-                if (aux1.nextUser.equals(Main.user)){
+                if (aux1.nextUser.identification==Main.user.identification){
                     jComboBox3.addItem(aux1.getNameList());
                     jComboBox4.addItem(aux1.getNameList());
                 }
             }
             aux1= aux1.nextFriend;
         }
-        if (aux1.nextUser.equals(Main.user)){
+        if (aux1.nextUser.identification==Main.user.identification){
             jComboBox3.addItem(aux1.getNameList());
             jComboBox4.addItem(aux1.getNameList());
         }

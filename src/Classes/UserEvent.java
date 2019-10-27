@@ -5,12 +5,14 @@
  */
 package Classes;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Sebas
  */
-public class UserEvent {
-    UserEvent next;
-    Event nextEvent;
+public class UserEvent implements Serializable{
+    public UserEvent next;
+    public User User;
     
 }

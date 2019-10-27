@@ -5,11 +5,13 @@
  */
 package Classes;
 
+import java.io.Serializable;
+
 /**
  *
  * @author yosin
  */
-public class UserReport {
+public class UserReport implements Serializable{
     public UserReport next;
     public Report nextReport;
 }

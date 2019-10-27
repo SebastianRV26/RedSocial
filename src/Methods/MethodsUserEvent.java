@@ -6,12 +6,16 @@
 package Methods;
 
 import Classes.*;
-
+import static Main.Main.user;
+import Classes.User;
+import Main.Main;
 /**
  *
- * @author Sebas
+ * @author yosiney
  */
 public class MethodsUserEvent {
+    UserMethods met = UserMethods.getInstance();
+    MethodsEvent metE = MethodsEvent.getInstance();
     public Event first, last;
     public static MethodsUserEvent instance = null;
     public static MethodsUserEvent getInstance(){
@@ -20,15 +24,40 @@ public class MethodsUserEvent {
         }
         return instance;
     }
-    
-    public Event searchEvent(int IDEvent){
-        Event aux = first;
-        while (aux != null){
-            if (aux.getIDEvent()== IDEvent){
-                return aux;
-            }
-            aux = aux.nextEvent;
-        }
-        return null;
+   
+    public boolean insertSubUser(int idEvent,int idUser){
+       Event auxEvent= Main.event.buscarEvento(idEvent); 
+       UserMethods user= UserMethods.getInstance();
+       User auxUser=user.buscarCliente(idUser);
+       
+       UserEvent userEvent=  new UserEvent();
+       userEvent.User=auxUser; 
+       if(auxEvent==null){
+           return false;
+       }
+       if(auxUser==null){
+           return false;
+       }
+       
+       if(auxEvent.user==null){ 
+           auxEvent.user=userEvent;
+           metE.MeterArchivo();
+           met.MeterArchivo();
+           return true;
+       }
+       UserEvent start =auxEvent.user;
+       while(start!=null){
+           if(start.User.identification==auxUser.identification){
+               return false;
+           }
+           start= start.next;
+           
+       }
+       userEvent.next=auxEvent.user;
+       auxEvent.user=userEvent;
+       metE.MeterArchivo();
+       met.MeterArchivo();
+       return true;
     }
+
 }

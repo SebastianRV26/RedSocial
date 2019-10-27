@@ -7,6 +7,7 @@ package Frames;
 import Methods.UserMethods;
 import Classes.*;
 import Main.Main;
+import javax.swing.JOptionPane;
 /**
  *
  * @author pache
@@ -51,7 +52,7 @@ public class LogIn extends javax.swing.JFrame {
 
         jLabel2.setText("Contraseña:");
 
-        jButton1.setText("Iniciar sesión");
+        jButton1.setText("Aceptar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -88,12 +89,12 @@ public class LogIn extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel1)
                         .addComponent(jLabel2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
-                    .addComponent(jTextField2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(119, 119, 119))
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextField1)
+                    .addComponent(jTextField2))
+                .addContainerGap(119, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,14 +127,14 @@ public class LogIn extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if(("jairo".equals(jTextField1.getText()))&(Integer.parseInt(jTextField2.getText())== 123)){            
+        if(("jairo".equals(jTextField1.getText()))&&(Integer.parseInt(jTextField2.getText())== 123)){            
             Admin f3 = new Admin();
             f3.setVisible(true);
             dispose();
             
         }else{
            aux = met.inicio;
-        while(aux != met.fin){
+        while(aux != met.fin){  ///////////aqui
             if(aux.password.equals(jTextField2.getText())){
                 if(aux.userName.equals(jTextField1.getText())){
                     Main.user = aux;
@@ -149,7 +150,9 @@ public class LogIn extends javax.swing.JFrame {
                 UserF f5 = new UserF();
                 f5.setVisible(true);
                 dispose();
-            } 
+            }
+        if(jTextField1.getText().equals("")||jTextField2.getText().equals(""))
+            JOptionPane.showMessageDialog(null,"contraseña o usuario incorrecto");
         }
                 
     }//GEN-LAST:event_jButton1ActionPerformed

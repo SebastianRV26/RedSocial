@@ -7,14 +7,20 @@ package Methods;
 
 import Classes.*;
 import Main.Main;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author yosin
  */
-public class ReportMethods {
-    
+public class ReportMethods implements Serializable{
+    UserMethods met = UserMethods.getInstance();
     public ReportClass inicio,ultimo;
 
     public ReportMethods() {
@@ -32,6 +38,8 @@ public class ReportMethods {
             ultimo.sig=inicio;
             inicio.ant=inicio;
             ultimo.ant=inicio;
+            MeterArchivo();
+            met.MeterArchivo();
             return true;
         }
         
@@ -41,6 +49,8 @@ public class ReportMethods {
             inicio.ant=nuevo;
             ultimo.sig=nuevo;
             inicio=nuevo;
+            MeterArchivo();
+            met.MeterArchivo();
             return true;
         
         
@@ -50,6 +60,26 @@ public class ReportMethods {
     public ReportClass searchReport(int id){
         ReportClass nuevo=Main.List.inicio;
             if(nuevo.sig==Main.List.inicio){
+                if(nuevo.getId()==id){
+                    return nuevo;
+                }else{
+                    return null;
+                }  
+            }else{
+                do{
+                    if(nuevo.getId()==id){
+                        nuevo=nuevo.sig;
+                        return nuevo;
+                    }
+                    nuevo=nuevo.sig;
+
+                } while(nuevo!=Main.List.inicio);
+               return null; 
+    }
+    }
+    public ReportClass searchReport2(int id){
+        ReportClass nuevo=Main.List.inicio;
+            if(nuevo.sig.getId()==Main.List.inicio.getId()){
                 if(nuevo.getIdsend()==id){
                     return nuevo;
                 }else{
@@ -60,12 +90,11 @@ public class ReportMethods {
                     if(nuevo.getIdsend()==id){
                         nuevo=nuevo.sig;
                         return nuevo;
-                    }else{
-                       return null;
                     }
+                    nuevo=nuevo.sig;
 
-                } while(nuevo!=Main.List.inicio);
-                
+                } while(nuevo.getId()!=Main.List.inicio.getId());
+               return null; 
     }
     }
     public void toPrint(){
@@ -82,6 +111,40 @@ public class ReportMethods {
         }  
         
 }
+    public void MeterArchivo(){
+        try{
+            ObjectOutputStream escribiendo = new ObjectOutputStream(new FileOutputStream("./Reporte.txt"));
+            escribiendo.writeObject(inicio);
+            
+            
+            ObjectOutputStream escribiendo2 = new ObjectOutputStream(new FileOutputStream("./reportefin.txt"));
+            escribiendo2.writeObject(ultimo);
+            escribiendo.close();
+            escribiendo2.close();
+        }catch(IOException e){
+            
+        }
+    }
+    
+    public void SacarArchivo(){
+        try{
+            ObjectInputStream sacar = new ObjectInputStream(new FileInputStream("./Reporte.txt"));
+             inicio = (ReportClass)sacar.readObject();
+             
+             
+             ObjectInputStream sacar2 = new ObjectInputStream(new FileInputStream("./reportefin.txt"));
+             ultimo = (ReportClass)sacar2.readObject();
+             sacar2.close();
+             sacar.close();
+        }catch(IOException | ClassNotFoundException e){
+            
+        }
+        ReportClass aux = inicio;
+        while(aux.getId()!= ultimo.getId()){
+            aux = aux.sig;
+        }
+        ultimo = aux;
+    }   
 
     
 }

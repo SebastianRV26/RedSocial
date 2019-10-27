@@ -166,8 +166,8 @@ public class FiltersReports extends javax.swing.JFrame {
        try{
             String state= (String)jComboBox1.getSelectedItem();
             ReportClass nuevo=Main.List.inicio;
-            if(nuevo.sig==Main.List.inicio){
-                if(nuevo.getState()==state){
+            if(nuevo.sig.getId()==Main.List.inicio.getId()){
+                if(nuevo.getState().equals(state)){
                     list.addElement("Reporte: "+nuevo.getName());
                      list.addElement(" ID reporte: "+nuevo.getId());
                      list.addElement(" ");
@@ -177,16 +177,16 @@ public class FiltersReports extends javax.swing.JFrame {
                 }  
             }else{
                 do{
-                    if(nuevo.getState()==state){
+                    if(nuevo.getState().equals(state)){
                         nuevo=nuevo.sig;
                         list.addElement("Reporte: "+nuevo.getName());
                         list.addElement(" ID reporte: "+nuevo.getId());
                         list.addElement(" ");
-                    }else{
-                        JOptionPane.showMessageDialog(null,"No hay Reportes");
+                        nuevo=nuevo.sig;
                     }
+                    nuevo=nuevo.sig;
 
-                } while(nuevo!=Main.List.inicio);
+                } while(nuevo.getId()!=Main.List.inicio.getId());
                 jList1.setModel(list);
             } 
            

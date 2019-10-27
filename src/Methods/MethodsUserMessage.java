@@ -6,7 +6,13 @@
 package Methods;
 
 
+import Classes.FriendList;
 import Classes.*;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 /**
  *
@@ -14,7 +20,9 @@ import Classes.*;
  */
 public class MethodsUserMessage { 
     Message first, last;
-    
+    UserMethods met = UserMethods.getInstance();
+    MethodsFriendList metFriendList = MethodsFriendList.getInstance();
+    MethodsMessage metM = MethodsMessage.getInstance();
     public static MethodsUserMessage instance = null;
     public static MethodsUserMessage getInstance(){
         if(instance == null){
@@ -39,10 +47,16 @@ public class MethodsUserMessage {
         //auxProveedor.sigProveClientes sería el inicio de cada subLista
         if (auxMessage.nextFriendList == null) { //si no exite nodo, lo crea
             auxMessage.nextFriendList = userMes;
+            met.MeterArchivo();
+            metFriendList.MeterArchivo();
+            metM.MeterArchivo();
             return 2; 
         }
         userMes.nextFriendList = auxFriendList.nextFriend; //en caso de que ya exista nodo, lo asigna al inicio
-        auxMessage.nextFriendList = userMes;  
+        auxMessage.nextFriendList = userMes; 
+        met.MeterArchivo();
+        metFriendList.MeterArchivo();
+        metM.MeterArchivo();
         return 2; //asignado
     }
     
@@ -62,10 +76,17 @@ public class MethodsUserMessage {
         //auxProveedor.sigProveClientes sería el inicio de cada subLista
         if (auxMessage.nextFriendList == null) { //si no exite nodo, lo crea
             auxMessage.nextFriendList = userMes;
+            met.MeterArchivo();
+            metFriendList.MeterArchivo();
+            metM.MeterArchivo();
             return 2; 
         }
         userMes.nextUser = auxUser.sig; //en caso de que ya exista nodo, lo asigna al inicio
-        auxMessage.nextFriendList = userMes;  
+        auxMessage.nextFriendList = userMes; 
+        met.MeterArchivo();
+        metFriendList.MeterArchivo();
+        metM.MeterArchivo();
         return 2; //asignado
     }
+    
 }

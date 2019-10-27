@@ -8,13 +8,15 @@ package Methods;
 import Classes.ReportClass;
 import Classes.User;
 import Main.Main;
+import java.io.Serializable;
 
 
 /**
  *
  * @author yosin
  */
-public class MethodsUserReports{
+public class MethodsUserReports implements Serializable{
+    UserMethods met = UserMethods.getInstance();
     public static MethodsUserReports instance = null;
     public static MethodsUserReports getInstance(){
         if(instance == null){
@@ -26,7 +28,7 @@ public class MethodsUserReports{
          UserMethods user= UserMethods.getInstance();
          User aux=user.buscarCliente(users);
          
-     ReportClass searchreport= Main.List.searchReport(users);
+     ReportClass searchreport= Main.List.searchReport2(users);
             
      if(aux==null){ 
          return 0;
@@ -37,7 +39,8 @@ public class MethodsUserReports{
      
     if(aux.nextReportUser==null){
         aux.nextReportUser=searchreport;
- 
+        met.MeterArchivo();
+        Main.List.MeterArchivo();
         return 2;
      
     }
@@ -46,6 +49,8 @@ public class MethodsUserReports{
     aux.nextReportUser.user=searchreport.user;
     System.out.println(aux.nextReportUser);
          System.out.println(searchreport.user);
+         met.MeterArchivo();
+        Main.List.MeterArchivo();
     return 2;
 }
         

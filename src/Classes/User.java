@@ -1,5 +1,7 @@
 package Classes;
 
+import java.io.Serializable;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,20 +12,19 @@ package Classes;
  *
  * @author pache
  */
-public class User {
+public class User implements Serializable {
     public String userName;
     public String password;
     public String city;
     public String country;
     public int identification; 
     public String name;
-    String surname;
-    String surname2;
-    String photography;
+    public String surname;
+    public String surname2;
+    public String photography;
     public User sig,ant;
     public FriendListUser nextFriendList;
     public ReportClass  nextReportUser;
-    public UserMessage nextUserMessage;
 
     public User(String userName, String password, String city, String country, int identification, String name, String surname, String surname2, String photography) {
         this.userName = userName;
